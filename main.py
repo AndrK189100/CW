@@ -33,11 +33,11 @@ if __name__ == '__main__':
     path = 'disk:/andrew_pd-fpy_py-51'
     api_v = '5.131'
     album_id = 'profile'
-    user_id = '552934290'
-    ya_token = 'AQAAAAAAELw0AADLW9frvTFv50OJnTyg2wQd1J0'
+    #user_id = '552934290'
 
-    #user_id = input('Введите ID пользователя Вконтакте: ')
-    #ya_token = input('Введите токен Яндекс диска: ')
+
+    user_id = input('Введите ID пользователя Вконтакте: ')
+    ya_token = input('Введите токен Яндекс диска: ')
     print('Работаем...)')
 
     with open('log.txt', 'w', encoding='UTF-8') as f:
