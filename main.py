@@ -78,7 +78,7 @@ if __name__ == '__main__':
             exit(res['error'])
 
     with open('log.txt', 'a', encoding='UTF-8') as f:
-        f.write('Загрузка файлов на YANDEX диск:\n')
+        f.write('====Загрузка файлов на YANDEX диск:====\n')
         for photo in photos:
             res = upload_photo(ya_token, path, photo['url'], photo['name'] + '.jpg')
             time.sleep(1)
@@ -92,7 +92,7 @@ if __name__ == '__main__':
         json.dump(create_json(photos), f, indent=4)
 
     with open('log.txt', 'a', encoding='UTF-8') as f:
-        f.write('Запись в JSON\n')
+        f.write('====Запись в JSON====\n')
         f.write('объект сохранен в файл result.json\n')
         f.write('\n')
         f.write('Программа успешно завершена\n')
