@@ -2,18 +2,23 @@ import requests
 
 
 class GetVkPhotos:
-    __url = 'https://api.vk.com/method/photos.get'
-
-    def __init__(self, token: str, api_v='5.131'):
+    __api_url = 'https://api.vk.com/method/'
+    def __init__(self, token: str, user_str: str,  api_v='5.131'):
         self.token = token
         self.api_v = api_v
+        params = {'user_ids': user_str, 'access_token': self.token, 'v': self.api_v}
+        user = requests.get(self.__api_url + 'users.get', params = params).json()
+        if user['response']:
+            self.user_id = user['response'][0]['id']
+        else:
+            raise ValueError("user not found")
 
-    def get(self, user_id: str, album_id = 'profile'):
+    def get(self, album_id = 'profile', count = '1000'):
 
         max_sizes_photos = []
-        params = {'owner_id': user_id, 'album_id': album_id, 'count': '1000', 'access_token': self.token,
+        params = {'owner_id': self.user_id, 'album_id': album_id, 'count': count, 'access_token': self.token,
                   'v': self.api_v, 'extended': '1'}
-        resp = requests.get(url=self.__url, params=params)
+        resp = requests.get(url='https://api.vk.com/method/photos.get', params=params)
 
         if resp.status_code != 200:
             return {'error': resp.status_code}
