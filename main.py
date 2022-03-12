@@ -12,7 +12,7 @@ def create_json(photos: list):
         photos_json.append({'file_name': photo['name'], 'size': photo['size']})
 
     with open('result.json', 'w') as f:
-        json.dump(photos, f, indent=4)
+        json.dump(photos_json, f, indent=4)
 
 
 
